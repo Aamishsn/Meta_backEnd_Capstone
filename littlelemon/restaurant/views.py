@@ -16,12 +16,6 @@ from .serializers import MenuSerializer, BookingSerializer, UserSerializer
 
 from django.contrib.auth.models import User
 
-
-# Create your views here.
-
-# def sayHello(request):
-#  return HttpResponse('Hello World')
-
 def index(request):
     return render(request, 'index.html', {})
 
@@ -37,15 +31,5 @@ class UserViewSet(viewsets.ModelViewSet):
    queryset = User.objects.all()
    serializer_class = UserSerializer
    permission_classes = [permissions.IsAuthenticated]
-   
-# class MenuItemsView(generics.ListCreateAPIView):
-#     permission_classes = [IsAuthenticated]
-#     queryset = MenuItem.objects.all()
-#     serializer_class = MenuItemSerializer
-   
-   
-@api_view()
-@permission_classes([IsAuthenticated])
-# @authentication_classes([TokenAuthentication])
 def msg(request):
     return Response({"message":"This view is protected"})
